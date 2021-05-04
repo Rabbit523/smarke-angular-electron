@@ -1,0 +1,26 @@
+
+<div class ="bg">
+
+    <div class="login">
+      <div class="login-content">
+          <form  #forgotPassword="ngForm"    (ngSubmit)="onSubmit(forgotPassword)"   class="form-group" action="login1.html">
+     
+              <h2 class="form-signin-heading text-center">
+                <img src="../../src/assets/images/logo.jpg"></h2>
+              <label for="pwd">Email</label>
+              <input type="text" class="form-control" name="email" #email="ngModel"  [(ngModel)]="_form.email" placeholder="Insert your Email Address"
+              pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"  required="" autofocus=""  autocomplete="off" />
+              <div *ngIf= "email.errors && (email.dirty || email.touched) "
+              class="text-danger">
+              <small [hidden]="!email.hasError('required')">Email is required </small>
+              <small [hidden]="!email.hasError('pattern')">should be valid email </small>
+              </div>
+      
+              <div class="btn">
+                  <button class="btn btn-lg btn-primary center-align" type="submit"  [disabled]="!forgotPassword.valid">Recupera</button> </div>
+          </form>
+      </div>
+      <button class="remember"  routerLink="/login" >Rememebred the password? Login</button>
+    </div>
+    <!-- <router-outlet></router-outlet> -->
+    </div>

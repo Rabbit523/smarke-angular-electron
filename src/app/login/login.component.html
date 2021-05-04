@@ -1,0 +1,30 @@
+<div class="login">
+    <div class="login-content">
+        <form   #loginForm="ngForm"  (ngSubmit)="onSubmit(loginForm)" class="form-signin" action="account.html">
+            <h2 class="form-signin-heading text-center"><img src="../../src/assets/images/logo.jpg"></h2>
+            <label for="pwd">Email</label>
+            <input type="text" class="form-control" name="email" [(ngModel)]="_form.email"   #email="ngModel"placeholder="Insert your email" required
+            pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"    autofocus="" autocomplete="off" />
+                <div *ngIf= "email.errors && (email.dirty || email.touched) "
+                class="text-danger">
+                <small [hidden]="!email.hasError('required')">Email is required </small>
+                <small [hidden]="!email.hasError('pattern')">should be valid email </small>
+    </div>
+
+
+            <label for="pwd">Password</label>
+            <input type="password" class="form-control" name="password"  [(ngModel)]="_form.password" #password="ngModel" placeholder="Insert your password" required
+                autofocus=""   autocomplete="off"/>
+                <div *ngIf= "password.errors && (password.dirty || password.touched) "
+                class="text-danger">
+                <small [hidden]="!password.hasError('required')">Password is required </small>
+    </div>  
+    <p style="text-align:right;" routerLink ="/forgot"> Forgot Password</p>
+            <div class="btn">
+                <button class="btn btn-lg btn-primary center-align"   [disabled]="!loginForm.valid" type="submit">Accedi</button> 
+            </div>
+        </form>
+    </div>
+    <button class="remember" routerLink ="/register" >Don't have an account? Register it</button>
+</div>
+

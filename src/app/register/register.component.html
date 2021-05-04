@@ -1,0 +1,36 @@
+<div class="login">
+    <div class="login-content content1">
+        <form     #registerForm ="ngForm"  (ngSubmit)="onSubmit(registerForm)"  class="form-signin" action="login.html">
+            <h2 class="form-signin-heading text-center"><img src="../../src/assets/images/logo.jpg"></h2>
+            <label for="pwd">Name</label>
+            <input type="text" class="form-control" #username="ngModel" [(ngModel)]="_form.username" name="username" placeholder="Insert your email" required
+            pattern = "[a-zA-Z ]+"   autofocus=""  autocomplete="off"/>
+            <div *ngIf= "username.errors && (username.dirty || username.touched) "
+            class="text-danger">
+                <small [hidden]="!username.hasError('required')"> Name is required</small>
+                <small [hidden]="!username.hasError('pattern')">Only alphabets allowed</small>
+                </div>
+            <label for="pwd">Email</label>
+            <input type="text" class="form-control" name="email"   #email ="ngModel"  [(ngModel)]="_form.email" placeholder="Insert your email" required
+                      pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"    autofocus="" autocomplete="off"/>
+                <div *ngIf= "email.errors && (email.dirty || email.touched) "
+                class="text-danger">
+                <small [hidden]="!email.hasError('required')">Email is required </small>
+                <small [hidden]="!email.hasError('pattern')">should be valid email </small>
+                </div>
+            <label for="pwd">Password</label>
+            <input type="password" class="form-control" name="password"  #password="ngModel" [(ngModel)]="_form.password" placeholder="Insert your password" required
+                autofocus=""  autocomplete="off" />
+                <div *ngIf= "password.errors && (password.dirty || password.touched) "
+                class="text-danger">
+                <small [hidden]="!password.hasError('required')">Password is required </small>
+              </div>
+            <div class="btn">
+                <button class="btn btn-lg btn-primary  center-align" routerLink="/login"  type="submit"   [disabled]="!registerForm.valid">Crea</button> 
+              </div>
+            <p class="mar-top">By registering you accept the <a href="#">Terms of Use &</a> 
+     <br>Smarkez's <a href="#">Privacy Policy</a></p>
+     </form>
+    </div>
+    <button class="remember" routerLink="/login">  Already have an account?  Sign in</button>
+</div>
